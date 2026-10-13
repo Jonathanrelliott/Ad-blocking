@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "requestDomains": [
+        "33across.com",
+        "3lift.com",
+        "adcolony.com",
+        "adform.net",
+        "adnxs.com",
+        "adservice.google.com",
+        "adsrvr.org",
+        "amazon-adsystem.com",
+        "bidswitch.net",
+        "casalemedia.com",
+        "criteo.com",
+        "criteo.net",
+        "doubleclick.net",
+        "googleadservices.com",
+        "googlesyndication.com",
+        "googletagservices.com",
+        "gumgum.com",
+        "indexww.com",
+        "lijit.com",
+        "media.net",
+        "moatads.com",
+        "openx.net",
+        "outbrain.com",
+        "popads.net",
+        "propellerads.com",
+        "pubmatic.com",
+        "quantserve.com",
+        "rubiconproject.com",
+        "scorecardresearch.com",
+        "sharethrough.com",
+        "smartadserver.com",
+        "sovrn.com",
+        "taboola.com",
+        "teads.tv",
+        "triplelift.com",
+        "yieldmo.com",
+        "zedo.com"
+      ],
+      "resourceTypes": [
+        "script",
+        "sub_frame",
+        "image",
+        "xmlhttprequest",
+        "ping",
+        "media",
+        "other"
+      ]
+    }
+  }
+]
