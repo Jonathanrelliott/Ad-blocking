@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": "(^|[/=_.-])ads\\.js([?#&]|$)",
+      "isUrlFilterCaseSensitive": false
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "regexFilter": "(^|[/=_.-])pagead\\.js([?#&]|$)",
+      "isUrlFilterCaseSensitive": false
+    }
+  }
+]

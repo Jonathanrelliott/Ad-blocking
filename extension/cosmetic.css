@@ -1,0 +1,38 @@
+/*
+ * Static cosmetic filters, injected at document_start so ad slots never paint.
+ *
+ * Keep this list in sync with AD_SELECTORS in src/config.js: the CSS hides the
+ * slots, and the layout engine uses the same selectors to find the dead space
+ * and reclaim it. Domain-specific selectors belong in src/sites.js instead.
+ */
+
+.ad,
+.ads,
+.ad-slot,
+.ad-unit,
+.ad-wrapper,
+.ad-container,
+.ad-banner,
+.ad-placeholder,
+.adsbygoogle,
+.advertisement,
+.sponsored-box,
+.sponsored-content,
+.dfp-ad,
+.gpt-ad,
+.native-ad,
+.taboola,
+.outbrain,
+.OUTBRAIN,
+[id^="div-gpt-ad"],
+[id^="google_ads_iframe"],
+[id^="taboola-"],
+[id^="ad-slot"],
+[data-ad-slot],
+[data-ad-unit],
+[data-google-query-id],
+[aria-label="Advertisement"],
+iframe[src*="doubleclick.net"],
+iframe[src*="googlesyndication.com"] {
+  display: none !important;
+}
