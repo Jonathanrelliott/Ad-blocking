@@ -84,7 +84,7 @@ and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not.
   and the CRX URL under the same `appid`.
 - Vivaldi is Chromium-based, so MV3, `declarativeNetRequest` and
   `ExtensionInstallForcelist` behave the same. It reads policy from its own
-  location rather than Chrome's (e.g. `HKLM\\SOFTWARE\\Policies\\Vivaldi` on
+  location rather than Chrome's (e.g. `HKLM\SOFTWARE\Policies\Vivaldi` on
   Windows, `/etc/vivaldi/policies/managed/` on Linux,
   `com.vivaldi.Vivaldi` on macOS). Check `vivaldi://policy` to confirm the
   forcelist entry was picked up.
