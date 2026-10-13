@@ -1,0 +1,20 @@
+:root {
+  color-scheme: light dark;
+  --ok: #2e7d32;
+  --bad: #c62828;
+}
+body {
+  width: 280px;
+  margin: 0;
+  padding: 12px 14px;
+  font: 13px/1.4 system-ui, sans-serif;
+}
+h1 { font-size: 15px; margin: 0 0 8px; }
+.status { font-weight: 600; margin: 0; }
+.status.ok { color: var(--ok); }
+.status.bad { color: var(--bad); }
+.detail { margin: 4px 0 10px; opacity: 0.8; }
+.row { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+form { display: grid; gap: 4px; border-top: 1px solid #8884; padding-top: 10px; }
+input { width: 100%; box-sizing: border-box; padding: 4px; }
+button { justify-self: start; }

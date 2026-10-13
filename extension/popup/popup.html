@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Reader Restore</h1>
+  <p id="status" class="status">Checking AdGuard…</p>
+  <p id="detail" class="detail"></p>
+  <div class="row">
+    <button id="recheck" type="button">Check again</button>
+    <a id="dashboard" href="#" target="_blank" rel="noopener">Open AdGuard</a>
+  </div>
+  <form id="settings">
+    <label for="url">AdGuard Home URL</label>
+    <input id="url" type="url" required>
+    <button type="submit">Save</button>
+  </form>
+  <script src="popup.js"></script>
+</body>
+</html>

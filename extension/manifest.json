@@ -8,17 +8,31 @@
   "minimum_chrome_version": "102",
   "permissions": [
     "declarativeNetRequest",
-    "scripting"
+    "scripting",
+    "storage",
+    "alarms"
   ],
   "host_permissions": [
     "<all_urls>"
   ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "Reader Restore",
+    "default_popup": "popup/popup.html"
+  },
   "declarative_net_request": {
     "rule_resources": [
       {
         "id": "ad_scripts",
         "enabled": true,
         "path": "rules.json"
+      },
+      {
+        "id": "adguard_fallback",
+        "enabled": false,
+        "path": "fallback-rules.json"
       }
     ]
   },

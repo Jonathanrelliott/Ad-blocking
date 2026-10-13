@@ -13,12 +13,46 @@ those empty slots.
 extension/
   manifest.json      MV3 manifest, update_url for the self-hosted store
   rules.json         declarativeNetRequest: block ads.js / pagead.js
+  fallback-rules.json  ad-network domains, only on while AdGuard is unreachable
+  popup/             toolbar popup: AdGuard status, dashboard link, URL setting
+  src/background.js  AdGuard reachability check, toggles the fallback rules
   cosmetic.css       static ad-slot hiding (document_start, all frames)
   src/config.js      default selectors and engine tuning
   src/sites.js       per-domain rules  <- edit this to add sites
   src/layout.js      layout restructuring engine
   src/content.js     bootstrap + MutationObserver
 ```
+
+## Working alongside AdGuard on Tailscale
+
+The service worker checks the AdGuard Home dashboard
+(`https://ad.lab.editgenlx.com/` by default) every 2 minutes, and whenever
+the popup is opened.
+
+- **Reachable** (on the tailnet): ad domains are left to AdGuard's DNS
+  filtering. Only `rules.json` and the cosmetic/layout scripts run, so the two
+  never block the same thing twice.
+- **Unreachable** (Tailscale off, or the AdGuard container down): the
+  `adguard_fallback` ruleset (`fallback-rules.json`) is switched on so the big
+  ad networks are still blocked, the badge shows `OFF`, and the popup says so.
+  It switches off again on the next check that reaches AdGuard.
+
+"Reachable" means the dashboard host answered, not that the browser is
+actually resolving through AdGuard. The URL can be changed in the popup if
+AdGuard moves.
+
+### Vivaldi notes
+
+- **Turn off Vivaldi's own DNS-over-HTTPS** (Settings > Privacy and Security >
+  "Use DNS over HTTPS"), or point it at AdGuard. With DoH on, Vivaldi resolves
+  names itself and bypasses AdGuard's DNS filtering on the tailnet entirely.
+- In the Tailscale admin console, AdGuard's Tailscale IP should be a global
+  nameserver with "Override local DNS" on, so every device on the tailnet uses it.
+- Vivaldi's built-in Tracker and Ad Blocker can stay on; overlapping with it
+  is harmless. Turn it off if a site breaks, to see which blocker is
+  responsible.
+- To try a build without the force-install pipeline: `vivaldi://extensions`,
+  enable Developer mode, then "Load unpacked" and pick the `extension/` folder.
 
 ## How the layout engine works
 
@@ -92,6 +126,7 @@ and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not.
 
 ## Permissions
 
-`declarativeNetRequest` for `rules.json`, `<all_urls>` host access for the
-content scripts, and `scripting`, which is declared for future programmatic
+`declarativeNetRequest` for `rules.json` and `fallback-rules.json`,
+`<all_urls>` host access for the content scripts, `storage` and `alarms` for
+the AdGuard check and its URL setting, and `scripting`, which is declared for future programmatic
 injection (e.g. per-site CSS via `chrome.scripting`) and is unused today.
