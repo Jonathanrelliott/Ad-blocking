@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Reader Restore Ad Blocker",
+  "short_name": "Reader Restore",
+  "version": "1.0.0",
+  "description": "Blocks first-party ad scripts, hides ad slots, and reflows news articles into the space ads leave behind.",
+  "update_url": "https://extention.lab.editgenlx.com/updates.xml",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "declarativeNetRequest",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ad_scripts",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "css": ["cosmetic.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": [
+        "src/config.js",
+        "src/sites.js",
+        "src/layout.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
