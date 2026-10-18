@@ -30,7 +30,7 @@
     ],
 
     // Ad-serving hosts. A static image, iframe or link pointing here is an ad.
-    // rules.json blocks the same list at the network level.
+    // fallback-rules.json blocks the same list while AdGuard is unreachable.
     AD_HOSTS: [
       'doubleclick.net', 'googlesyndication.com', 'googleadservices.com',
       'adnxs.com', 'amazon-adsystem.com', 'taboola.com', 'outbrain.com',
