@@ -113,8 +113,12 @@ alt text, or an "Advertisement" label beside it). Tune `AD_HOSTS`,
 
 `rules.json` uses `regexFilter` rather than a plain `ads.js` substring so the
 file name has to start at a path/query boundary: `/ads.js`, `/js/pagead.js?v=2`
-and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not. Rule 3 blocks the `AD_HOSTS` ad
-networks outright, as a backstop for when DNS isn't going through AdGuard.
+and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not.
+
+Ad-network domains (the `AD_HOSTS` networks and a few more) live in
+`fallback-rules.json`, not here. That ruleset is only switched on while
+AdGuard is unreachable, so the extension doesn't duplicate AdGuard's DNS
+blocking on the tailnet (see "Working alongside AdGuard on Tailscale").
 
 ## Packaging for the force-install pipeline
 

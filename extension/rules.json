@@ -20,44 +20,5 @@
       "regexFilter": "(^|[/=_.-])pagead\\.js([?#&]|$)",
       "isUrlFilterCaseSensitive": false
     }
-  },
-  {
-    "id": 3,
-    "priority": 1,
-    "action": {
-      "type": "block"
-    },
-    "condition": {
-      "requestDomains": [
-        "doubleclick.net",
-        "googlesyndication.com",
-        "googleadservices.com",
-        "adnxs.com",
-        "amazon-adsystem.com",
-        "taboola.com",
-        "outbrain.com",
-        "criteo.com",
-        "criteo.net",
-        "pubmatic.com",
-        "rubiconproject.com",
-        "openx.net",
-        "adsrvr.org",
-        "moatads.com",
-        "media.net",
-        "teads.tv",
-        "smartadserver.com",
-        "adform.net",
-        "casalemedia.com",
-        "3lift.com",
-        "revcontent.com",
-        "mgid.com",
-        "zergnet.com",
-        "sharethrough.com",
-        "yieldmo.com",
-        "adroll.com",
-        "bidswitch.net",
-        "serving-sys.com"
-      ]
-    }
   }
 ]
