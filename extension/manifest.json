@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Reader Restore Ad Blocker",
   "short_name": "Reader Restore",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Blocks first-party ad scripts, hides ad slots, and reflows news articles into the space ads leave behind.",
   "update_url": "https://extention.lab.editgenlx.com/updates.xml",
   "minimum_chrome_version": "102",
@@ -34,6 +34,7 @@
       "js": [
         "src/config.js",
         "src/sites.js",
+        "src/detect.js",
         "src/layout.js",
         "src/content.js"
       ],

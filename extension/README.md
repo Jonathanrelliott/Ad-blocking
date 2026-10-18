@@ -16,6 +16,7 @@ extension/
   cosmetic.css       static ad-slot hiding (document_start, all frames)
   src/config.js      default selectors and engine tuning
   src/sites.js       per-domain rules  <- edit this to add sites
+  src/detect.js      static banner detector (tags data-rr-ad)
   src/layout.js      layout restructuring engine
   src/content.js     bootstrap + MutationObserver
 ```
@@ -63,11 +64,23 @@ Append an entry to `RR.SITES` in `src/sites.js`:
 Global selectors go in both `cosmetic.css` and `AD_SELECTORS` in
 `src/config.js`. New network rules go in `rules.json` with a fresh `id`.
 
+## Static ads
+
+Plain `<a><img></a>` banners and first-party iframes have no script to block
+and often no known class. `src/detect.js` tags them with `data-rr-ad` (hidden
+by `cosmetic.css`, then reclaimed by the layout engine) when a small,
+text-light element has a strong signal (src/href on an `AD_HOSTS` domain, or
+an ad class/id token like `ad-`, `sponsored`, `mpu`) or an IAB ad size
+(728x90, 300x250, 300x600, ...) plus a weak one (ad-looking URL path, ad
+alt text, or an "Advertisement" label beside it). Tune `AD_HOSTS`,
+`AD_URL_PATTERN`, `AD_TOKEN_PATTERN` and `AD_SIZES` in `src/config.js`.
+
 ## Network rules
 
 `rules.json` uses `regexFilter` rather than a plain `ads.js` substring so the
 file name has to start at a path/query boundary: `/ads.js`, `/js/pagead.js?v=2`
-and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not.
+and `?f=ads.js` are blocked, `threads.js` and `uploads.js` are not. Rule 3 blocks the `AD_HOSTS` ad
+networks outright, as a backstop for when DNS isn't going through AdGuard.
 
 ## Packaging for the force-install pipeline
 

@@ -33,6 +33,12 @@
 [data-google-query-id],
 [aria-label="Advertisement"],
 iframe[src*="doubleclick.net"],
-iframe[src*="googlesyndication.com"] {
+iframe[src*="googlesyndication.com"],
+amp-ad,
+amp-embed,
+a[href*="doubleclick.net"],
+a[href*="/aclk?"],
+a[href*="googleadservices.com"],
+[data-rr-ad] {
   display: none !important;
 }
