@@ -53,6 +53,7 @@
   const site = resolveSite(location.hostname);
   const cfg = buildConfig(RR.config, site);
   const engine = (RR.engine = RR.createEngine(cfg, site));
+  const detector = RR.createDetector(cfg);
 
   injectSiteCss(site);
 
@@ -64,6 +65,8 @@
     scheduled = false;
     // Pages that hydrate late can turn into articles after the first check.
     if (!isArticle) isArticle = looksLikeArticle(site, engine);
+    // Tag static banners first so the engine reclaims them in the same pass.
+    detector.run(isArticle ? engine.findArticle() : null);
     engine.run({ article: isArticle });
     // Drop the mutation records our own style writes just produced.
     if (observer) observer.takeRecords();
